@@ -1,18 +1,18 @@
 package com.wordcounter.counter;
 
 import com.wordcounter.input.TextSource;
-import com.wordcounter.predicate.WordPredicate;
 import com.wordcounter.tokenizer.TextTokenizer;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.function.Predicate;
 
 public class WordCounterImpl implements WordCounter {
     
     private final TextTokenizer textTokenizer;
-    private final WordPredicate wordPredicate;
+    private final Predicate<String> wordPredicate;
     
-    public WordCounterImpl(TextTokenizer textTokenizer, WordPredicate wordPredicate) {
+    public WordCounterImpl(TextTokenizer textTokenizer, Predicate<String> wordPredicate) {
         this.textTokenizer = textTokenizer;
         this.wordPredicate = wordPredicate;
     }
