@@ -6,7 +6,7 @@ import java.util.Scanner;
 /**
  * A TextSource that reads text from standard input (stdin). Reads single lines of text until the end of input.
  */
-public class StdInputTextSupplier implements TextSource {
+public class StdInputTextSource implements TextSource {
 
     @Override
     public Reader read() {
