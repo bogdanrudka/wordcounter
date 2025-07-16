@@ -8,6 +8,6 @@ import java.util.stream.Stream;
 public class SymbolsTextTokenizer implements TextTokenizer{
     @Override
     public Stream<String> tokenize(String text) {
-        return text.isEmpty() ? Stream.empty() : Stream.of(text.split("[\\s+.!?,\\-]+"));
+        return text == null || text.isEmpty() ? Stream.empty() : Stream.of(text.split("[\\s+.!?,\\-]+"));
     }
 }
