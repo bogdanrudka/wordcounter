@@ -12,7 +12,7 @@ public class StopWordPredicate implements Predicate<String> {
     private final Set<String> stopWords;
     
     public StopWordPredicate(Set<String> stopWords) {
-        this.stopWords = stopWords;
+        this.stopWords = stopWords == null ? Set.of() : stopWords;
     }
     
     @Override

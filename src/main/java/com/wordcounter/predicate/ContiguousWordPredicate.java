@@ -8,11 +8,14 @@ import java.util.function.Predicate;
 public class ContiguousWordPredicate implements Predicate<String> {
     @Override
     public boolean test(String token) {
+        if(token == null || token.isBlank()){
+            return false;
+        }
         for (char ch : token.toCharArray()) {
             if (!Character.isLetter(ch)) {
                 return false;
             }
         }
-        return !token.isEmpty();
+        return true;
     }
 }
