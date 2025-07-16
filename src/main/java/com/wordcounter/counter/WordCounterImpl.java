@@ -5,6 +5,7 @@ import com.wordcounter.tokenizer.TextTokenizer;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.*;
 import java.util.function.Predicate;
 
 public class WordCounterImpl implements WordCounter {
@@ -19,16 +20,15 @@ public class WordCounterImpl implements WordCounter {
 
     @Override
     public Count count(TextSource textSource) {
-        int totalWords;
+        List<String> result;
         try (BufferedReader reader = new BufferedReader(textSource.read())) {
-            totalWords = reader.lines()
+            result = reader.lines()
                 .flatMap(textTokenizer::tokenize)
                 .filter(wordPredicate::test)
-                .mapToInt(w -> 1)
-                .sum();
+                .toList();
         } catch (IOException e) {
             throw new RuntimeException("Failed to read text", e);
         }
-        return new Count(totalWords);
+        return new Count(result.size(), new HashSet<>(result).size());
     }
 }
